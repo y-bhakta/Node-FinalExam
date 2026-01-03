@@ -50,3 +50,6 @@ Generated on 2026-01-03.
 Live Link
 
 [https://node-final-exam.vercel.app/login](https://node-final-exam-cq2n6wbe3-yash-bhaktas-projects.vercel.app/login)
+
+Email:- yash@gmail.com
+Password:- 123
