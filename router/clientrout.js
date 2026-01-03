@@ -26,7 +26,7 @@ clientrout.get('/changepassword',clientctl.changePasswordPage);
 clientrout.post('/changepassword',clientctl.changePassword);
 clientrout.get('/profile',clientctl.profile);
 clientrout.get('/edit-profile',clientctl.editprofilepage);
-clientrout.post('/edit-profile', upload, clientctl.editprofile);
+clientrout.post('/edit-profile', upload.single('image'), clientctl.editprofile);
 // Task routes
 clientrout.get('/addTask', taskCtl.addTaskPage);
 clientrout.post('/addTask', taskCtl.addTask);

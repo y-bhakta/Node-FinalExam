@@ -1,15 +1,17 @@
-import multer from "multer";
+import multer from 'multer';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import cloudinary from '../configs/cloudinary.js';
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: '',
+    allowed_formats: ['jpg','jpeg','png','webp'],
+    transformation: [{ width: 1200, crop: 'limit' }],
   },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' + uniqueSuffix)
-  }
 });
 
-const upload = multer({ storage: storage }).single('image');
+const upload = multer({ storage });
 
+// For multiple file upload, use upload.array('images') in routes
 export default upload;

@@ -93,7 +93,7 @@ const clientctl={
             let oneuser = res.locals.user;
             const updateData = { ...req.body };
             if (req.file) {
-                updateData.image = `uploads/${req.file.filename}`;
+                updateData.image = req.file.path;
                 console.log(`[editprofile] Image uploaded: ${updateData.image}`);
             } else {
                 console.log('[editprofile] No file received from multer');
