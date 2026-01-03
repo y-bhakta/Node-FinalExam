@@ -1,0 +1,25 @@
+import express from 'express';
+import dotenv from './configs/dotenv.js';
+import db from './configs/db.js';
+import cookieParser from 'cookie-parser';
+import clientrout from './router/clientrout.js';
+
+const port=dotenv.PORT || 3259;
+const app=express();
+
+app.set('view engine','ejs');
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(cookieParser());
+app.use('/uploads',express.static('uploads'));
+app.use(express.static('public'));
+
+app.use('/',clientrout);
+
+app.listen(port,(err)=>{
+    if(err){
+        console.log(err);       
+    }else{
+        console.log(`Server is running here: http://localhost:${port}`);
+    }
+});
